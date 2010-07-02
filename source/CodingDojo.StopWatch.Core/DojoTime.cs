@@ -2,7 +2,7 @@ using System;
 
 namespace CodingDojo.StopWatch
 {
-    public class DojoTime
+    public class DojoTime : IDojoTime
     {
         private TimeSpan time = new TimeSpan(0);
         private static readonly TimeSpan OneMinute = new TimeSpan(0, 1, 0);

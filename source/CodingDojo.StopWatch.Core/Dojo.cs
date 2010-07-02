@@ -7,21 +7,19 @@ namespace CodingDojo.StopWatch
     public class Dojo : INotifyPropertyChanged
     {
         private readonly IList<Coder> coders = new List<Coder>();
-        private readonly DojoTime teamDojoTime;
+        private readonly DojoTime teamDojoTime = new DojoTime();
+        private DojoStopWatch stopWatch;
+
+        private IDojoTime currentTime;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Dojo()
         {
-            teamDojoTime = new DojoTime();
-            teamDojoTime.TimeChanged+=TeamDojoTimeOnTimeChanged;
-               
+            teamDojoTime.TimeChanged += (sender, args) => OnPropertyChanged("TeamTime");
+            currentTime = teamDojoTime;
         }
 
-        private void TeamDojoTimeOnTimeChanged(object sender, EventArgs eventArgs)
-        {
-            OnPropertyChanged("TeamTime");
-        }
 
         public void AddCoder(Coder coder)
         {
@@ -34,7 +32,6 @@ namespace CodingDojo.StopWatch
             get { return coders.Count; }
         }
 
-
         private void OnPropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
@@ -44,14 +41,14 @@ namespace CodingDojo.StopWatch
             }
         }
 
-        public TimeSpan TeamTime
+        public TimeSpan CurrentTime
         {
-            get { return teamDojoTime.Time; }
+            get { return currentTime.Time; }
         }
 
-        public void IncreaseTeamTime()
+        public void IncreaseTime()
         {
-            teamDojoTime.Increase();
+            currentTime.Increase();
         }
 
         public void SetTeamTime(TimeSpan timeSpan)
@@ -59,10 +56,16 @@ namespace CodingDojo.StopWatch
             teamDojoTime.SetTime(timeSpan);
         }
 
-
-        public void DecreaseTeamTime()
+        public void DecreaseTime()
         {
-            teamDojoTime.Decrease();
+            currentTime.Decrease();
+        }
+
+        public void StartNewRound()
+        {
+            stopWatch = new DojoStopWatch();
+            currentTime = stopWatch;
+            stopWatch.StartRound(teamDojoTime);
         }
     }
 }

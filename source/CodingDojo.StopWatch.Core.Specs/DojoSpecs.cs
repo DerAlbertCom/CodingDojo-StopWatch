@@ -35,13 +35,13 @@ namespace CodingDojo.StopWatch.Core.Specs
     {
         protected override void Because()
         {
-            Sut.IncreaseTeamTime();
+            Sut.IncreaseTime();
         }
 
         [Observation]
         public void Should_the_team_time_increased_for_one_minute()
         {
-            Sut.TeamTime.ShouldBeEqualTo(new TimeSpan(0, 1, 0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0, 1, 0));
         }
 
         [Observation]
@@ -68,13 +68,13 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
         protected override void Because()
         {
-            Sut.IncreaseTeamTime();
+            Sut.IncreaseTime();
         }
 
         [Observation]
         public void Should_the_team_time_increased_for_one_minute()
         {
-            Sut.TeamTime.ShouldBeEqualTo(new TimeSpan(0,8,0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,8,0));
         }
         [Observation]
         public void Should_the_property_changed_count_is_2()
@@ -100,13 +100,13 @@ namespace CodingDojo.StopWatch.Core.Specs
 
         protected override void Because()
         {
-            Sut.DecreaseTeamTime();
+            Sut.DecreaseTime();
         }
 
         [Observation]
         public void Should_the_team_decreased_for_one_minute()
         {
-            Sut.TeamTime.ShouldBeEqualTo(new TimeSpan(0,6,0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,6,0));
         }
 
         [Observation]
@@ -132,13 +132,41 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
         protected override void Because()
         {
-            Sut.DecreaseTeamTime();
+            Sut.DecreaseTime();
         }
 
         [Observation]
         public void Should_the_team_time_zero()
         {
-            Sut.TeamTime.ShouldNotBeEqualTo(new TimeSpan(0,0,0));
+            Sut.CurrentTime.ShouldNotBeEqualTo(new TimeSpan(0,0,0));
         }
     }
+
+    [Concern(typeof(Dojo))]
+    public class When_starting_a_coding_round : ConcernOfDojo
+    {
+        private TimeSpan sixMinutes;
+
+        protected override void EstablishContext()
+        {
+            sixMinutes = new TimeSpan(0, 6, 0);
+        }
+
+        protected override void PrepareSut()
+        {
+            base.PrepareSut();
+            Sut.SetTeamTime(sixMinutes);
+        }
+        protected override void Because()
+        {
+            Sut.StartNewRound();
+        }
+
+        [Observation]
+        public void Should_the_remaing_time_the_teamtime()
+        {
+            Sut.CurrentTime.ShouldBeEqualTo(sixMinutes);
+        }
+    }
+
 }

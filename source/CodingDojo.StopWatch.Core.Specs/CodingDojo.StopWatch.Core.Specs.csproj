@@ -46,8 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoderSpecs.cs" />
+    <Compile Include="DojoSpecs.cs" />
     <Compile Include="ConcernOfDojo.cs" />
+    <Compile Include="DojoStopWatchSpecs.cs" />
     <Compile Include="DojoTimeSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

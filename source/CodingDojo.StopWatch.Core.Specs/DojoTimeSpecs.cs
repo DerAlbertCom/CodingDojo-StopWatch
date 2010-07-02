@@ -15,7 +15,7 @@ namespace CodingDojo.StopWatch.Core.Specs
     }
 
     [Concern(typeof (DojoTime))]
-    public class When_dojotime_is_created: ConcernOfDojoTime
+    public class When_dojotime_is_created : ConcernOfDojoTime
     {
         protected override void Because()
         {
@@ -32,7 +32,6 @@ namespace CodingDojo.StopWatch.Core.Specs
     [Concern(typeof (DojoTime))]
     public class When_dojotime_is_increased : ConcernOfDojoTime
     {
-
         protected override void Because()
         {
             Sut.Increase();
@@ -41,7 +40,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_dojotime_is_one_minute()
         {
-            Sut.Time.ShouldBeEqualTo(new TimeSpan(0,1,0));
+            Sut.Time.ShouldBeEqualTo(new TimeSpan(0, 1, 0));
         }
 
         [Observation]
@@ -59,6 +58,7 @@ namespace CodingDojo.StopWatch.Core.Specs
             base.PrepareSut();
             Sut.SetTime(new TimeSpan(0, 2, 0));
         }
+
         protected override void Because()
         {
             Sut.Increase();
@@ -67,7 +67,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_time_is_three_minutes()
         {
-            Sut.Time.ShouldBeEqualTo(new TimeSpan(0,3,0));
+            Sut.Time.ShouldBeEqualTo(new TimeSpan(0, 3, 0));
         }
 
         [Observation]
@@ -76,7 +76,8 @@ namespace CodingDojo.StopWatch.Core.Specs
             TimeChangedCount.ShouldBeEqualTo(2);
         }
     }
-    [Concern(typeof(DojoTime))]
+
+    [Concern(typeof (DojoTime))]
     public class When_dojotime_is_decreased_from_two_minutes : ConcernOfDojoTime
     {
         protected override void PrepareSut()
@@ -84,6 +85,7 @@ namespace CodingDojo.StopWatch.Core.Specs
             base.PrepareSut();
             Sut.SetTime(new TimeSpan(0, 2, 0));
         }
+
         protected override void Because()
         {
             Sut.Decrease();
@@ -101,5 +103,4 @@ namespace CodingDojo.StopWatch.Core.Specs
             TimeChangedCount.ShouldBeEqualTo(2);
         }
     }
-
 }
