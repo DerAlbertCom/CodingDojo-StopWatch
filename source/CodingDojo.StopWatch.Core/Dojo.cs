@@ -7,10 +7,20 @@ namespace CodingDojo.StopWatch
     public class Dojo : INotifyPropertyChanged
     {
         private readonly IList<Coder> coders = new List<Coder>();
+        private readonly DojoTime teamDojoTime;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Dojo()
         {
-            TeamTime = new TimeSpan(0, 0, 0);
+            teamDojoTime = new DojoTime();
+            teamDojoTime.TimeChanged+=TeamDojoTimeOnTimeChanged;
+               
+        }
+
+        private void TeamDojoTimeOnTimeChanged(object sender, EventArgs eventArgs)
+        {
+            OnPropertyChanged("TeamTime");
         }
 
         public void AddCoder(Coder coder)
@@ -24,7 +34,6 @@ namespace CodingDojo.StopWatch
             get { return coders.Count; }
         }
 
-        private TimeSpan teamTime;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -37,32 +46,23 @@ namespace CodingDojo.StopWatch
 
         public TimeSpan TeamTime
         {
-            get { return teamTime; }
-            private set
-            {
-                if (teamTime != value)
-                {
-                    teamTime = value;
-                    OnPropertyChanged("TeamTime");
-                }
-            }
+            get { return teamDojoTime.Time; }
         }
 
         public void IncreaseTeamTime()
         {
-            TeamTime = TeamTime.Add(new TimeSpan(0, 1, 0));
+            teamDojoTime.Increase();
         }
 
         public void SetTeamTime(TimeSpan timeSpan)
         {
-            TeamTime = timeSpan;
+            teamDojoTime.SetTime(timeSpan);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void DecreaseTeamTime()
         {
-            TeamTime = TeamTime.Subtract(new TimeSpan(0, 1, 0));
+            teamDojoTime.Decrease();
         }
     }
 }
