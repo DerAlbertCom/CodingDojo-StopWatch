@@ -77,7 +77,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         {
             base.PrepareSut();
             Sut.StartRound(RoundTimeSixMinutes);
-        }
+        }   
 
         protected override void Because()
         {

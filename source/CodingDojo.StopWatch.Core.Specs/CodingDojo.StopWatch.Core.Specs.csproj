@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoderQueueSpecs.cs" />
     <Compile Include="DojoSpecs.cs" />
     <Compile Include="ConcernOfDojo.cs" />
     <Compile Include="DojoStopWatchSpecs.cs" />

@@ -7,8 +7,8 @@ namespace CodingDojo.StopWatch
     public class Dojo : INotifyPropertyChanged
     {
         private readonly IList<Coder> coders = new List<Coder>();
-        private readonly DojoTime teamDojoTime = new DojoTime();
-        private DojoStopWatch stopWatch;
+        private readonly DojoTime roundTime = new DojoTime();
+        private readonly DojoStopWatch stopWatch = new DojoStopWatch();
 
         private IDojoTime currentTime;
 
@@ -16,8 +16,9 @@ namespace CodingDojo.StopWatch
 
         public Dojo()
         {
-            teamDojoTime.TimeChanged += (sender, args) => OnPropertyChanged("TeamTime");
-            currentTime = teamDojoTime;
+            roundTime.TimeChanged += (sender, args) => OnPropertyChanged("TeamTime");
+            stopWatch.TimeChanged += (sender, args) => OnPropertyChanged("TeamTime");
+            currentTime = roundTime;
         }
 
 
@@ -51,9 +52,9 @@ namespace CodingDojo.StopWatch
             currentTime.Increase();
         }
 
-        public void SetTeamTime(TimeSpan timeSpan)
+        public void SetRoundTime(TimeSpan timeSpan)
         {
-            teamDojoTime.SetTime(timeSpan);
+            roundTime.SetTime(timeSpan);
         }
 
         public void DecreaseTime()
@@ -63,9 +64,8 @@ namespace CodingDojo.StopWatch
 
         public void StartNewRound()
         {
-            stopWatch = new DojoStopWatch();
             currentTime = stopWatch;
-            stopWatch.StartRound(teamDojoTime);
+            stopWatch.StartRound(roundTime);
         }
     }
 }

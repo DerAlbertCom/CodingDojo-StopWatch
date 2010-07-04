@@ -35,6 +35,13 @@ namespace CodingDojo.StopWatch
             OnTimeChanged();
         }
 
+        public void StartRound(IDojoTime dojoTime)
+        {
+            currentTime = DateTime.Now;
+            endTime = currentTime.Add(dojoTime.Time);
+            OnTimeChanged();
+        }
+
         private void OnTimeChanged()
         {
             var handler = TimeChanged;
@@ -42,13 +49,6 @@ namespace CodingDojo.StopWatch
             {
                 handler(this,EventArgs.Empty);
             }
-        }
-
-        public void StartRound(IDojoTime dojoTime)
-        {
-            currentTime = DateTime.Now;
-            endTime = currentTime.Add(dojoTime.Time);
-            OnTimeChanged();
         }
     }
 }

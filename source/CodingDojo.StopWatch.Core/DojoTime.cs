@@ -14,11 +14,9 @@ namespace CodingDojo.StopWatch
             get { return time; }
             private set
             {
-                if (time != value)
-                {
-                    time = value;
-                    OnTimeChanged();
-                }
+                if (time == value) return;
+                time = value;
+                OnTimeChanged();
             }
         }
 

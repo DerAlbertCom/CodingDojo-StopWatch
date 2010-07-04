@@ -12,7 +12,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
 
         [Observation]
-        public void Should_the_coder_count_be_1()
+        public void Should_the_coders_count_be_1()
         {
             Sut.CodersCount.ShouldBeEqualTo(1);
         }
@@ -21,6 +21,39 @@ namespace CodingDojo.StopWatch.Core.Specs
         public void Should_the_property_changed_count_is_1()
         {
             PropertyChangedCount.ShouldBeEqualTo(1);
+        }
+
+        [Observation]
+        public void Should_the_changed_property_name_is_coderscount()
+        {
+            PropertyChangedName.ShouldBeEqualTo("CodersCount");
+        }
+    }
+
+    [Concern(typeof(Dojo), "Setting up a CodingDojo")]
+    public class When_adding_a_coder_to_a_dojo_with_two_existing_coders : ConcernOfDojo
+    {
+        protected override void PrepareSut()
+        {
+            base.PrepareSut();
+            Sut.AddCoder(new Coder());
+            Sut.AddCoder(new Coder());
+        }
+        protected override void Because()
+        {
+            Sut.AddCoder(new Coder());
+        }
+
+        [Observation]
+        public void Should_the_coders_count_be_3()
+        {
+            Sut.CodersCount.ShouldBeEqualTo(3);
+        }
+
+        [Observation]
+        public void Should_the_property_changed_count_is_3()
+        {
+            PropertyChangedCount.ShouldBeEqualTo(3);
         }
 
         [Observation]
@@ -64,7 +97,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void PrepareSut()
         {
             base.PrepareSut();
-            Sut.SetTeamTime(new TimeSpan(0, 7, 0));
+            Sut.SetRoundTime(new TimeSpan(0, 7, 0));
         }
         protected override void Because()
         {
@@ -95,7 +128,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void PrepareSut()
         {
             base.PrepareSut();
-            Sut.SetTeamTime(new TimeSpan(0,7,0));
+            Sut.SetRoundTime(new TimeSpan(0,7,0));
         }
 
         protected override void Because()
@@ -128,7 +161,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void PrepareSut()
         {
             base.PrepareSut();
-            Sut.SetTeamTime(new TimeSpan(0,0,10));
+            Sut.SetRoundTime(new TimeSpan(0,0,10));
         }
         protected override void Because()
         {
@@ -155,7 +188,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void PrepareSut()
         {
             base.PrepareSut();
-            Sut.SetTeamTime(sixMinutes);
+            Sut.SetRoundTime(sixMinutes);
         }
         protected override void Because()
         {
