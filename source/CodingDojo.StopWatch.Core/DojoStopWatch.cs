@@ -2,7 +2,7 @@
 
 namespace CodingDojo.StopWatch
 {
-    public class DojoStopWatch : IDojoTime
+    public class DojoStopWatch : IDojoTime, IUpdating
     {
         private static readonly TimeSpan OneMinute = new TimeSpan(0, 1, 0);
         private static readonly TimeSpan ZeroMinutes = new TimeSpan(0, 0, 0);
@@ -49,6 +49,11 @@ namespace CodingDojo.StopWatch
             {
                 handler(this,EventArgs.Empty);
             }
+        }
+
+        void IUpdating.Update()
+        {
+            OnTimeChanged();
         }
     }
 }

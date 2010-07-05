@@ -51,6 +51,7 @@
     <Compile Include="ConcernOfDojo.cs" />
     <Compile Include="DojoStopWatchSpecs.cs" />
     <Compile Include="DojoTimeSpecs.cs" />
+    <Compile Include="DojoUpdatingTimerSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -84,9 +84,9 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
 
         [Observation]
-        public void Should_the_changed_property_name_is_coderscount()
+        public void Should_the_changed_property_name_is_currenttime()
         {
-            PropertyChangedName.ShouldBeEqualTo("TeamTime");
+            PropertyChangedName.ShouldBeEqualTo("CurrentTime");
         }
 
     }
@@ -116,9 +116,9 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
 
         [Observation]
-        public void Should_the_changed_property_name_is_coderscount()
+        public void Should_the_changed_property_name_is_currenttime()
         {
-            PropertyChangedName.ShouldBeEqualTo("TeamTime");
+            PropertyChangedName.ShouldBeEqualTo("CurrentTime");
         }
     }
 
@@ -149,9 +149,9 @@ namespace CodingDojo.StopWatch.Core.Specs
         }
 
         [Observation]
-        public void Should_the_changed_property_name_is_coderscount()
+        public void Should_the_changed_property_name_is_currenttime()
         {
-            PropertyChangedName.ShouldBeEqualTo("TeamTime");
+            PropertyChangedName.ShouldBeEqualTo("CurrentTime");
         }
     }
 
