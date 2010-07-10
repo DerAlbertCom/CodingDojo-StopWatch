@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xUnit.BDDExtensions.MVC</name>
+    </assembly>
+    <members>
+        <member name="T:Xunit.ControllerContextSpecification`1">
+            <summary>
+            A Specification Class you can use for you ControllerAction Tests.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Xunit.ControllerContextSpecification`1.PrepareRequestContext(Xunit.IMockedRequestContext)">
+            <summary>
+            Overide this if you need to modify your Mocked Request Context. You
+            can add User-Roles for Authentication, can add the AntiForgeryToken, can change
+            the HttpMethod and do whatever you need.
+            </summary>
+            <param name="requestContext">A mocked RequestContext</param>
+        </member>
+        <member name="M:Xunit.ControllerContextSpecification`1.CreateControllerActionInvokerBuilder">
+            <summary>
+            Creates a ControllerActionInvokerBuilder which use a <see cref="T:System.Web.Mvc.ControllerActionInvoker"/> specific
+            for running specifications. You need only override this if you habe a custom ControllerActionInvoker
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xunit.ControllerContextSpecification`1.InvokeAction``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Invokes a Controller-Action with all ActionFilters applied to them.
+            It uses the given HttpMethod - default is GET. Also is serialize given parameters to the FormCollection
+            so that ModelBinding and Validation can executed
+            </summary>
+            <remarks>
+            If you wan't the modified the RequestContext, you have to override the <see cref="M:Xunit.ControllerContextSpecification`1.PrepareRequestContext(Xunit.IMockedRequestContext)"/>
+            to add the AntiForgeryToken or a UserRole for the Action.
+            </remarks>
+            <see cref="!:InvokePostAction(Expression expression)"/>
+            <typeparam name="TResult">Result Type of the Action</typeparam>
+            <param name="expression">The expression with of the Controller-Action</param>
+            <returns>The result of the Action</returns>
+        </member>
+        <member name="M:Xunit.ControllerContextSpecification`1.InvokePostAction``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Invokes a Controller-Action with all ActionFilters applied to them.
+            It uses the POST-HttpMethod also is serialize given parameters to the FormCollection
+            so that ModelBinding and Validation can executed.
+            </summary>
+            <remarks>
+            If you wan't the modified the RequestContext, you have to override the <see cref="M:Xunit.ControllerContextSpecification`1.PrepareRequestContext(Xunit.IMockedRequestContext)"/>
+            to add the AntiForgeryToken or a UserRole for the Action.
+            </remarks>
+            <see cref="!:InvokeAction(Expression expression)"/>
+            <typeparam name="TResult">Result Type of the Action</typeparam>
+            <param name="expression">The expression with of the Controller-Action</param>
+            <returns>The result of the Action</returns>
+        </member>
+        <member name="T:Xunit.ControllerActionInvokerBuilder">
+            <summary>
+            Creates a MockedRequestContext, serialize paramters to FormCollection and finally
+            invoke the the Action
+            </summary>
+        </member>
+        <member name="T:Xunit.MockedRequestContextValueStore">
+            <summary>
+            A helper class which enables you the use it in ExtensionMethods for IMockedRequestContext if
+            you need to save some values for the test outside the RequestContext
+            </summary>
+        </member>
+        <member name="M:Xunit.MockedRequestContextValueStore.SetValue``1(Xunit.IMockedRequestContext,System.String,``0)">
+            <summary>
+            Set a value for 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="context"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xunit.MockedRequestContextValueStore.GetValue``1(Xunit.IMockedRequestContext,System.String)">
+            <summary>
+            Get the value for a given key
+            </summary>
+            <remarks>
+            throws <see cref="M:System.Collections.Generic.KeyNotFoundException.#ctor"/> if the key doesn't exists
+            </remarks>
+            <typeparam name="T"></typeparam>
+            <param name="context"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xunit.Internal.MvcExpressionHelper">
+            <summary>
+            Analysis
+            </summary>
+        </member>
+        <member name="M:Xunit.MockedRequestContextExtensions.AntiForgeryToken(Xunit.IMockedRequestContext)">
+            <summary>
+            Creates the AntiForgeryToken in the MockedRequestContext
+            </summary>
+            <param name="context"></param>
+            <returns>IMockedRequestContext for chaining</returns>
+        </member>
+        <member name="M:Xunit.MockedRequestContextExtensions.SerializeModelToForm(Xunit.IMockedRequestContext,System.Object,System.String)">
+            <summary>
+            Serialize all public properties of a model instance to the FormCollection
+            of the IMockedRequestContext.Request
+            </summary>
+            <param name="context"></param>
+            <param name="instance"></param>
+            <param name="parameterName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xunit.MockedRequestContextExtensions.Role(Xunit.IMockedRequestContext,System.String)">
+            <summary>
+            Creates a IPrincipal which is in the given role. The created user ist
+            stored in IMockedRequestContext.Context.User
+            </summary>
+            <param name="context"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xunit.MockedRequestContextExtensions.HttpMethod(Xunit.IMockedRequestContext,System.String)">
+            <summary>
+            Set HttpMode in IMockedRequestContext.Request.HttpMode. This is used from the
+            ControllerActionInvoker to selecte the Action which is invoked.
+            </summary>
+            <param name="context"></param>
+            <param name="httpMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xunit.ISpecificationActionInvoker">
+            <summary>
+            Interface for SpecificationActionInvoker for Running test. Create
+            your own if you have a custom ControllerActionInvoker.
+             </summary>
+            <remarks>
+            Derive from your ControllerActionInvoker, implement this interface
+            and override InvokeActionResult(), within that you only safe the
+            ActionResult and don't invoke the ActionResult.
+            </remarks>
+        </member>
+        <member name="T:Xunit.RequestContextBuilder">
+            <summary>
+            Builds a mocked Request Context which
+            there are several extensions method with daily needs of
+            an ASP.NET MVC Developer.
+            <see cref="T:Xunit.IMockedRequestContext"/>
+            </summary>
+        </member>
+        <member name="T:Xunit.SpecificationControllerActionInvoker">
+            <summary>
+            A ControllerActionInvoker which supress the invoking of the ActionResult, it simply
+            save the ActionResult so that it can used in the Test.
+            </summary>
+        </member>
+    </members>
+</doc>

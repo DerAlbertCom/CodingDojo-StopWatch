@@ -1,0 +1,1330 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xUnit.BDDExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:Xunit.BehaviorConfigBase">
+            <summary>
+              Helper base class for implementing <see cref="T:Xunit.IBehaviorConfig"/>.
+            </summary>
+        </member>
+        <member name="T:Xunit.IBehaviorConfig">
+            <summary>
+              Defines a modularization point for implementations of <see cref="T:Xunit.InstanceContextSpecification`1"/>.
+            </summary>
+        </member>
+        <member name="M:Xunit.IBehaviorConfig.EstablishContext(Xunit.IDependencyAccessor)">
+            <summary>
+              Uses the accessor specified by <paramref name = "accessor" /> in order to configure some behavior on dependencies
+              of the system under test. This is called before the system under test has been created.
+            </summary>
+            <param name = "accessor">
+              Specifies the accessor for accessing dependencies of the SUT.
+            </param>
+        </member>
+        <member name="M:Xunit.IBehaviorConfig.PrepareSut(System.Object)">
+            <summary>
+              Does some preparation of the sut itself (e.g. adding some elements to container like structures)
+            </summary>
+            <param name = "sut">
+              Specifies the sut.
+            </param>
+        </member>
+        <member name="M:Xunit.IBehaviorConfig.Cleanup(System.Object)">
+            <summary>
+              Performs some cleanup operation on the sut.
+            </summary>
+            <param name = "sut">
+              Specifies the sut.
+            </param>
+        </member>
+        <member name="M:Xunit.BehaviorConfigBase.EstablishContext(Xunit.IDependencyAccessor)">
+            <summary>
+              Uses the accessor specified by <paramref name = "accessor" /> in order to configure some behavior on dependencies
+              of the system under test. This is called before the system under test has been created.
+            </summary>
+            <param name = "accessor">Specifies the accessor for accessing dependencies of the SUT.</param>
+        </member>
+        <member name="M:Xunit.BehaviorConfigBase.PrepareSut(System.Object)">
+            <summary>
+              Does some preparation of the sut itself (e.g. adding some elements to container like structures)
+            </summary>
+            <param name = "sut">Specifies the sut.</param>
+        </member>
+        <member name="M:Xunit.BehaviorConfigBase.Cleanup(System.Object)">
+            <summary>
+              Performs some cleanup operation on the sut.
+            </summary>
+            <param name = "sut">Specifies the sut.</param>
+        </member>
+        <member name="T:Xunit.BehaviorConfigBase`1">
+            <summary>
+              Helper base class for implementing <see cref="T:Xunit.IBehaviorConfig"/>.
+            </summary>
+        </member>
+        <member name="T:Xunit.ICommandOptions">
+            <summary>
+              Defines a mock framework independent fluent interface for setting up behavior
+              for methods returning void (commands)
+            </summary>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Throw(System.Exception)">
+            <summary>
+              Configures that the invocation of the related behavior
+              results in the specified <see cref="T:System.Exception"/> beeing thrown.
+            </summary>
+            <param name="exception">
+              Specifies the exception which should be thrown when the 
+              behavior is invoked.
+            </param>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Callback(System.Action)">
+            <summary>
+            Configures that the invocation of the related behavior
+            results in a callback.
+            </summary>
+            <param name="action">
+            Specifies the Action which should be called when the
+            behavior is invoked
+            </param>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Callback``1(System.Action{``0})">
+            <summary>
+            Configures that the invocation of the related behavior
+            results in a callback.
+            </summary>
+            <param name="action">
+            Specifies the Action which should be called when the
+            behavior is invoked
+            </param>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Callback``2(System.Action{``0,``1})">
+            <summary>
+            Configures that the invocation of the related behavior
+            results in a callback.
+            </summary>
+            <param name="action">
+            Specifies the Action which should be called when the
+            behavior is invoked
+            </param>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Callback``3(System.Action{``0,``1,``2})">
+            <summary>
+            Configures that the invocation of the related behavior
+            results in a callback.
+            </summary>
+            <param name="action">
+            Specifies the Action which should be called when the
+            behavior is invoked
+            </param>
+        </member>
+        <member name="M:Xunit.ICommandOptions.Callback``4(System.Action{``0,``1,``2,``3})">
+            <summary>
+            Configures that the invocation of the related behavior
+            results in a callback.
+            </summary>
+            <param name="action">
+            Specifies the Action which should be called when the
+            behavior is invoked
+            </param>
+        </member>
+        <member name="T:Xunit.Internal.ConfigurationExpression">
+            <summary>
+              This class is implements the configuration API for xUnit.BDDExtensions.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.ICore">
+            <summary>
+            Internal configuration interface for the core.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.ICore.EnsureConfigured">
+            <summary>
+            Veryfies that the configuration is valid.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            Is thrown when the configuration is in an invalid state.
+            </exception>
+        </member>
+        <member name="P:Xunit.Internal.ICore.MockingEngine">
+            <summary>
+            Gets the configured mocking engine.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.ICore.Builders">
+            <summary>
+            Gets a collection of all configured builders.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.ICore.ConfigurationRules">
+            <summary>
+            Gets a collection of all configured configuration rules.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.Xunit#Internal#ICore#EnsureConfigured">
+            <summary>
+              Veryfies that the configuration is valid.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+              Is thrown when the configuration is in an invalid state.
+            </exception>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.MockingEngineIs``1">
+            <summary>
+            Configures the mocking engine to be used.
+            </summary>
+            <typeparam name="TMockingEngine">
+            Specifies the type of the mocking engine.
+            </typeparam>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.MockingEngineIs(Xunit.IMockingEngine)">
+            <summary>
+            Specifies the mocking engine to be used.
+            </summary>
+            <param name="mockingEngine">
+            The mocking engine.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when <paramref name="mockingEngine"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.AddBuilder(Xunit.Internal.IBuilder)">
+            <summary>
+            Adds a builder to the xUnit.BDDExtensions build chain.
+            A builder is a class which is used by the xUnit.BDDExtensions
+            core in order to build a dependency of a class under specification
+            in the automocking container.
+            </summary>
+            <param name="externalBuilder">
+            Specifies the external builder.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when <paramref name="externalBuilder"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.AddBuilder``1">
+            <summary>
+            Adds a builder to the xUnit.BDDExtensions build chain.
+            A builder is a class which is used by the xUnit.BDDExtensions
+            core in order to build a dependency of a class under specification
+            in the automocking container.
+            </summary>
+            <typeparam name="TBuilder">
+            Specifies the type of the external builder.
+            </typeparam>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.AddConfigurationRule``1">
+            <summary>
+            Adds a configuration rule to xUnit.BDDExtensions.
+            A configuration rule is applied to a dependency of a class under
+            specification after it has been created by a builder. A <see cref="T:Xunit.Internal.IConfigurationRule"/>
+            can be used to apply mocking configuration as part of the build process
+            of the class under specification.
+            </summary>
+            <typeparam name="TConfigurationRule">
+            Specifies the type of the configuration rule.
+            </typeparam>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.AddConfigurationRule(Xunit.Internal.IConfigurationRule)">
+            <summary>
+            Adds a configuration rule to xUnit.BDDExtensions.
+            A configuration rule is applied to a dependency of a class under
+            specification after it has been created by a builder. A <see cref="T:Xunit.Internal.IConfigurationRule"/>
+            can be used to apply mocking configuration as part of the build process
+            of the class under specification.
+            </summary>
+            <param name="externalRule">
+            Specifies the external configuration rule.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the supplied configuration rule is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Xunit.Internal.ConfigurationExpression.Build">
+            <summary>
+              Builds the <see cref="T:Xunit.Internal.ICore"/> of xUnit.BDDExtensions.
+            </summary>
+            <returns>
+             The created core.
+            </returns>
+        </member>
+        <member name="P:Xunit.Internal.ConfigurationExpression.Xunit#Internal#ICore#MockingEngine">
+            <summary>
+              Gets the configured mocking engine.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.ConfigurationExpression.Xunit#Internal#ICore#Builders">
+            <summary>
+              Gets a collection of all configured builders.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.ConfigurationExpression.Xunit#Internal#ICore#ConfigurationRules">
+            <summary>
+              Gets a collection of all configured configuration rules.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.NulloCore">
+            <summary>
+              A null implementation of the <see cref="T:Xunit.Internal.ICore"/> interface.
+            </summary>
+        </member>
+        <member name="T:Xunit.IQueryOptions`1">
+            <summary>
+              Defines a mock framework independent fluent interface for setting up behavior
+              for methods returning a result (queries).
+            </summary>
+            <typeparam name = "TReturn">
+              Specifies the return value of the behavior under configuration.
+            </typeparam>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return(`0)">
+            <summary>
+              Sets up the return value of a behavior.
+            </summary>
+            <param name="returnValue">
+              Specifies the return value.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return(System.Func{`0})">
+            <summary>
+              Configures that the function supplied by <paramref name="valueFunction"/>
+              will be used to evaluate the result value of a behavior.
+            </summary>
+            <param name="valueFunction">
+              Specifies the function which is called when the method is called.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+            <remarks>
+              Use this for configuring parameterless methods.
+            </remarks>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return``1(System.Func{``0,`0})">
+            <summary>
+              Configures that the function supplied by <paramref name="valueFunction"/>
+              will be used to evaluate the result value of a behavior.
+            </summary>
+            <param name="valueFunction">
+              Specifies the function which is called when the method is called.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+            <remarks>
+              Use this for configuring methods with a single parameter.
+            </remarks>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return``2(System.Func{``0,``1,`0})">
+            <summary>
+              Configures that the function supplied by <paramref name="valueFunction"/>
+              will be used to evaluate the result value of a behavior.
+            </summary>
+            <param name="valueFunction">
+              Specifies the function which is called when the method is called.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+            <remarks>
+              Use this for configuring methods with two parameters.
+            </remarks>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return``3(System.Func{``0,``1,``2,`0})">
+            <summary>
+              Configures that the function supplied by <paramref name="valueFunction"/>
+              will be used to evaluate the result value of a behavior.
+            </summary>
+            <param name="valueFunction">
+              Specifies the function which is called when the method is called.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+            <remarks>
+              Use this for configuring methods with three parameters.
+            </remarks>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Return``4(System.Func{``0,``1,``2,``3,`0})">
+            <summary>
+              Configures that the function supplied by <paramref name="valueFunction"/>
+              will be used to evaluate the result value of a behavior.
+            </summary>
+            <param name="valueFunction">
+              Specifies the function which is called when the method is called.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+            <remarks>
+              Use this for configuring methods with four parameters.
+            </remarks>
+        </member>
+        <member name="M:Xunit.IQueryOptions`1.Throw(System.Exception)">
+            <summary>
+              Configures that the invocation of the related behavior
+              results in the specified <see cref="T:System.Exception"/> beeing thrown.
+            </summary>
+            <param name="exception">
+              Specifies the exception which should be thrown when the 
+              behavior is invoked.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.AutoMockingContainer`1">
+            <summary>
+              An auto-mocking-container is a container which tries to create stubs for every interface-dependency
+              found in the constructor of the type specified via <typeparamref name = "TTargetClass" />.
+            </summary>
+            <typeparam name = "TTargetClass">The concrete class being tested</typeparam>
+        </member>
+        <member name="T:Xunit.IMockingEngine">
+            <summary>
+            Interface to a mocking library. 
+            </summary>
+        </member>
+        <member name="M:Xunit.IMockingEngine.Stub(System.Type)">
+            <summary>
+            Creates a dependency of the type specified via <paramref name="interfaceType"/>.
+            </summary>
+            <param name="interfaceType">
+            Specifies the interface type to create a dependency for.
+            </param>
+            <returns>
+            The created dependency instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.IMockingEngine.PartialMock``1(System.Object[])">
+            <summary>
+            Creates a partial mock.
+            </summary>
+            <typeparam name="T">
+            Specifies the type of the partial mock. This needs to be 
+            an abstract base class.
+            </typeparam>
+            <param name="args">
+            Specifies the constructor parameters.
+            </param>
+            <returns>
+            The created instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.IMockingEngine.SetUpQueryBehaviorFor``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">
+              Specifies the type of the dependency.
+            </typeparam>
+            <typeparam name="TReturnValue">
+              Specifies the type of the return value.
+            </typeparam>
+            <param name="dependency">
+              The dependency to configure behavior on.
+            </param>
+            <param name="func">
+              Expression to set up the behavior.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+        </member>
+        <member name="M:Xunit.IMockingEngine.SetUpCommandBehaviorFor``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">
+              Specifies the type of the dependency.
+            </typeparam>
+            <param name="dependency">
+              The dependency to configure behavior on.
+            </param>
+            <param name="func">
+              Configures the behavior. This must be a void method.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.ICommandOptions"/> for further configuration.
+            </returns>
+            <remarks>
+              This method is used for command, e.g. methods returning void.
+            </remarks>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.#ctor">
+            <summary>
+              Initializes a new instance of the <see cref="T:Xunit.Internal.AutoMockingContainer`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.Stub(System.Type)">
+            <summary>
+              Creates a stub of the type specified via <paramref name = "interfaceType" />.
+            </summary>
+            <param name = "interfaceType">
+              Specifies the interface type to create a stub for.
+            </param>
+            <returns>
+              The created stub instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.SetUpQueryBehaviorFor``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">Specifies the type of the dependency.</typeparam>
+            <typeparam name="TReturnValue">Specifies the type of the return value.</typeparam>
+            <param name="dependency">The dependency to configure behavior on.</param>
+            <param name="func">Configures the behavior. This must be a void method.</param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.SetUpCommandBehaviorFor``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">Specifies the type of the dependency.</typeparam>
+            <param name="dependency">The dependency to configure behavior on.</param>
+            <param name="func">Configures the behavior. This must be a void method.</param>
+            <returns>
+              A <see cref="T:Xunit.ICommandOptions"/> for further configuration.
+            </returns>
+            <remarks>
+              This method is used for command, e.g. methods returning void.
+            </remarks>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.Service``1">
+            <summary>
+              Is called by the automocking container in order to  resolve a constructor dependency
+              of a class under test.
+            </summary>
+            <typeparam name = "T">
+              Specifies the type of the constructor dependency.
+            </typeparam>
+            <returns>
+              A created instance of the dependency.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.Service(System.Type)">
+            <summary>
+              Is called by the automocking container in order to resolve a constructor dependency
+              of a class under test.
+            </summary>
+            <returns>
+              A created instance of the dependency.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.PartialMock``1(System.Object[])">
+            <summary>
+              Creates a partial mock.
+            </summary>
+            <typeparam name = "T">
+              Specifies the type of the partial mock. This needs to be 
+              an abstract base class.
+            </typeparam>
+            <param name = "args">
+              Specifies the constructor parameters.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.AutoMockingContainer`1.Stub``1">
+            <summary>
+              Creates a stub.
+            </summary>
+            <typeparam name = "T">
+              Specifies the type of the stub. This needs to be an interface.
+            </typeparam>
+            <returns>
+              The created stub instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.IFabricContext">
+            <summary>
+              The context which encapsulates the state of a build operation inside of the fabric.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.IFabricContext.CreateStub(System.Type)">
+            <summary>
+              Creates a new stub of the specified interface type.
+            </summary>
+            <param name = "interfaceType">
+              Specifies a type to create a stub for.
+            </param>
+            <returns>
+              The created stub.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.IFabricContext.ResolveInstanceFromContainer(System.Type)">
+            <summary>
+              Resolves an instance of the specified type from the underlying IoC container.
+            </summary>
+            <param name = "typeToResolveByContainer">
+              The type to resolve.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.IFabricContext.ResolveInstancesFromContainer(System.Type)">
+            <summary>
+              Resolves a collection of the itemtype specified by <paramref name = "itemType" /> 
+              from the underlying IoC container.
+            </summary>
+            <param name = "itemType">
+              Specifies the item type.
+            </param>
+            <returns>
+              The resolved collection from the IoC container.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.IFabricContext.InjectExistingInstanceIntoContainer(System.Type,System.Object)">
+            <summary>
+              Registers the existing instance specified by <paramref name = "instance" />
+              under the interface specified by <paramref name = "interfaceType" /> at the underlying
+              IoC type.
+            </summary>
+            <param name = "interfaceType">
+              Specifies the interface type.
+            </param>
+            <param name = "instance">
+              Specifies an existing instance.
+            </param>
+        </member>
+        <member name="M:Xunit.Internal.IFabricContext.ResolveByFabric(System.Type)">
+            <summary>
+              Resolves the type specified by <paramref name = "type" />
+              with the root level fabric.
+            </summary>
+            <param name = "type">
+              Specifies the type to resolve.
+            </param>
+            <returns>
+              The resolved instance.
+            </returns>
+        </member>
+        <member name="P:Xunit.Internal.IFabricContext.ContainerModel">
+            <summary>
+              Gives full access to the underlying model of the IoC container.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.IFabricContext.TypeToBuild">
+            <summary>
+              Gets the type to build in the current build operation.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.#ctor(System.Type,Xunit.IMockingEngine,StructureMap.IContainer,Xunit.Internal.Fabric)">
+            <summary>
+              Creates a new instance of the <see cref="T:Xunit.Internal.FabricContext"/> class.
+            </summary>
+            <param name="typeToBuild">
+              Specifies the type to build.
+            </param>
+            <param name="mockingEngine">
+              Specifies the mock factory.
+            </param>
+            <param name="container">
+              Specifies the container.
+            </param>
+            <param name="fabric">
+              Specifies the fabric.
+            </param>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.ResolveInstanceFromContainer(System.Type)">
+            <summary>
+              Resolves an instance of the specified type from the underlying IoC container.
+            </summary>
+            <param name = "typeToResolveByContainer">
+              The type to resolve.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.ResolveInstancesFromContainer(System.Type)">
+            <summary>
+              Resolves a collection of the itemtype specified by <paramref name = "itemType" /> 
+              from the underlying IoC container.
+            </summary>
+            <param name = "itemType">
+              Specifies the item type.
+            </param>
+            <returns>
+              The resolved collection from the IoC container.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.InjectExistingInstanceIntoContainer(System.Type,System.Object)">
+            <summary>
+              Registers the existing instance specified by <paramref name = "instance" />
+              under the interface specified by <paramref name = "interfaceType" /> at the underlying
+              IoC type.
+            </summary>
+            <param name = "interfaceType">
+              Specifies the interface type.
+            </param>
+            <param name = "instance">
+              Specifies an existing instance.
+            </param>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.CreateStub(System.Type)">
+            <summary>
+              Creates a new stub of the specified interface type.
+            </summary>
+            <param name = "interfaceType">
+              Specifies a type to create a stub for.
+            </param>
+            <returns>
+              The created stub.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.FabricContext.ResolveByFabric(System.Type)">
+            <summary>
+              Resolves the type specified by <paramref name = "type" />
+              with the root level fabric.
+            </summary>
+            <param name = "type">
+              Specifies the type to resolve.
+            </param>
+            <returns>
+              The resolved instance.
+            </returns>
+        </member>
+        <member name="P:Xunit.Internal.FabricContext.TypeToBuild">
+            <summary>
+              Gets the type which is build in the current operation.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.FabricContext.ContainerModel">
+            <summary>
+              Gives full access to the underlying model of the IoC container.
+            </summary>
+        </member>
+        <member name="T:Xunit.ConcernAttribute">
+            <summary>
+            A concern. This attribute marks a specification to be related to a particular type.
+            </summary>
+        </member>
+        <member name="M:Xunit.ConcernAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes the <see cref="T:Xunit.ConcernAttribute"/> class.
+            </summary>
+            <param name="type">
+            The type related to the concern.
+            </param>
+        </member>
+        <member name="M:Xunit.ConcernAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes the <see cref="T:Xunit.ConcernAttribute"/> class.
+            </summary>
+            <param name="type">
+            The type related to the concern.
+            </param>
+            <param name="scenario">
+            Specifies a scenario.
+            </param>
+        </member>
+        <member name="P:Xunit.ConcernAttribute.Type">
+            <summary>
+            Gets the type this specification is for.
+            </summary>
+        </member>
+        <member name="P:Xunit.ConcernAttribute.Scenario">
+            <summary>
+            Gets the scenario of the type.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.DefaultBuilder">
+            <summary>
+              A <see cref="T:Xunit.Internal.IBuilder"/> implementation for standard interface + abstract class types.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.IBuilder">
+            <summary>
+              A builder is responsible for building a type (if he can)
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.IBuilder.KnowsHowToBuild(System.Type)">
+            <summary>
+              Determines whether the builder can build the supplied type.
+            </summary>
+            <param name = "type">
+              Specifies the type to check.
+            </param>
+            <returns>
+              Returns <c>true</c> if the type can be build; Otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.IBuilder.BuildFrom(Xunit.Internal.IFabricContext)">
+            <summary>
+              Builds an instance from/with the data contained in the supplied build context.
+            </summary>
+            <param name = "fabricContext">
+              Specifies the build context of the current build operation.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.DefaultBuilder.KnowsHowToBuild(System.Type)">
+            <summary>
+              Determines whether the builder can build the supplied type.
+            </summary>
+            <param name = "type">
+              Specifies the type to check.
+            </param>
+            <returns>
+              Returns <c>true</c> if the type can be build; Otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.DefaultBuilder.BuildFrom(Xunit.Internal.IFabricContext)">
+            <summary>
+              Builds an instance from/with the data contained in the supplied build context.
+            </summary>
+            <param name = "fabricContext">
+              Specifies the build context of the current build operation.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.Core">
+            <summary>
+              A configuration endpoint for the internal processes of xunit.bddextensions.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.Core.Configure(System.Action{Xunit.Internal.ConfigurationExpression})">
+            <summary>
+              Configures the core framwork of xUnit.BDDExtensions.
+            </summary>
+            <param name = "configurator">
+              Specifies a function which is used for configuring the framework.
+            </param>
+        </member>
+        <member name="M:Xunit.Internal.Core.BuildFabric">
+            <summary>
+              Creates the <see cref="T:Xunit.Internal.IFabric"/> which is used in the specifications.
+            </summary>
+            <returns>
+              A <see cref="T:Xunit.Internal.IFabric"/>.
+            </returns>
+        </member>
+        <member name="P:Xunit.Internal.Core.MockingEngine">
+            <summary>
+              Gets the <see cref="T:Xunit.IMockingEngine"/> which is used internally.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.Core.Builders">
+            <summary>
+              The set of default builders used inside xunit.bddextensions.
+            </summary>
+        </member>
+        <member name="P:Xunit.Internal.Core.ConfigurationRules">
+            <summary>
+              Gets the set of configuration rules used inside xunit.bddextensions.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.EnumerableBuilder.KnowsHowToBuild(System.Type)">
+            <summary>
+              Determines whether the builder can build the supplied type.
+            </summary>
+            <param name = "type">
+              Specifies the type to check.
+            </param>
+            <returns>
+              Returns <c>true</c> if the type can be build; Otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.EnumerableBuilder.BuildFrom(Xunit.Internal.IFabricContext)">
+            <summary>
+              Builds an instance from/with the data contained in the supplied build context.
+            </summary>
+            <param name = "fabricContext">
+              Specifies the build context of the current build operation.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.EnumerableExtensions">
+            <summary>
+              A container class for extensions on the <see cref="T:System.Type"/> class.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.EnumerableExtensions.Each``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+              Executes the action specified by <paramref name = "action" /> on each element of the specified
+              collection.
+            </summary>
+            <typeparam name = "T">
+              Specifies the collections item type.
+            </typeparam>
+            <param name = "enumerable">
+              Specifies the collection.
+            </param>
+            <param name = "action">
+              Specifies the operation to perform on each element.
+            </param>
+        </member>
+        <member name="T:Xunit.Internal.Guard">
+            <summary>
+              A helper class for argument checking.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.Guard.AgainstArgumentNull(System.Object,System.String)">
+            <summary>
+              Throws an <see cref="T:System.ArgumentNullException"/> in case the 
+              argument specified via <paramref name="argument"/> is <c>null</c>.
+            </summary>
+            <param name="argument">Specifies the argument</param>
+            <param name="argumentName">Specifies the arguments name.</param>
+        </member>
+        <member name="M:Xunit.Internal.Guard.AgainstNullOrEmptyString(System.String,System.String)">
+            <summary>
+              Checks whether the argument supplied by <paramref name="argument"/>
+              is <c>null</c> or an empty <see cref="T:System.String"/>.
+            </summary>
+            <param name="argument">The name.</param>
+            <param name="argumentName">Name of the argument.</param>
+            <exception cref="T:System.ArgumentException">
+              Thrown when <paramref name="argument"/> is <c>null</c> or an empty string.
+            </exception>
+        </member>
+        <member name="T:Xunit.IDependencyAccessor">
+            <summary>
+            Accessor interface for dependencies created and managed by mockframework / automocking container.
+            </summary>
+        </member>
+        <member name="M:Xunit.IDependencyAccessor.An``1">
+            <summary>
+            Creates a dependency of the type specified by <typeparamref name="TInterfaceType"/>.
+            </summary>
+            <typeparam name="TInterfaceType">
+            The type to create a dependency for. (Should be an interface)
+            </typeparam>
+            <returns>
+            An newly created instance implementing <typeparamref name="TInterfaceType"/>.
+            </returns>
+        </member>
+        <member name="M:Xunit.IDependencyAccessor.The``1">
+            <summary>
+            Creates a dependency of the type specified by <typeparamref name="TInterfaceType"/>.
+            This method reuses existing instances. If an instance of <typeparamref name="TInterfaceType"/>
+            was already requested it's returned here. (You can say this is kind of a singleton behavior)
+            
+            Besides that, you can obtain a reference to automatically injected stubs with this 
+            method.
+            </summary>
+            <typeparam name="TInterfaceType">
+            The type to create a dependency for. (Should be an interface)
+            </typeparam>
+            <returns>
+            An instance implementing <see cref="!:TInterfaceType"/>.
+            </returns>
+        </member>
+        <member name="M:Xunit.IDependencyAccessor.Some``1">
+            <summary>
+            Creates a list of dependencies of the type specified by <typeparamref name="TInterfaceType"/>.
+            </summary>
+            <typeparam name="TInterfaceType">
+            Specifies the dependency type. (Should be an interface).
+            </typeparam>
+            <returns>
+            An newly created instance implementing <typeparamref name="TInterfaceType"/>.
+            </returns>
+        </member>
+        <member name="M:Xunit.IDependencyAccessor.Use``1(``0)">
+            <summary>
+            Uses the instance supplied by <paramref name="instance"/> during the 
+            creation of the sut. The specified instance will be injected into the constructor.
+            </summary>
+            <typeparam name="TInterfaceType">
+            Specifies the interface type.
+            </typeparam>
+            <param name="instance">
+            Specifies the instance to be used for the specification.
+            </param>
+        </member>
+        <member name="T:Xunit.InstanceContextSpecification`1">
+            <summary>
+              Specification that contains a hook for newing up the system under test after the context
+              has been established.
+            </summary>
+            <typeparam name = "TSystemUnderTest">
+              Specifies the type of the system under test.
+            </typeparam>
+        </member>
+        <member name="T:Xunit.ISpecification">
+            <summary>
+              Interface used by the <see cref="T:Xunit.SpecificationCommand"/> to execute logic before
+              and after the execution of an xUnit.net test method.
+            </summary>
+        </member>
+        <member name="M:Xunit.ISpecification.Initialize">
+            <summary>
+              Initializes the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.ISpecification.Cleanup">
+            <summary>
+              Cleans up the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.#ctor">
+            <summary>
+              Creats a new instance of the <see cref="T:Xunit.InstanceContextSpecification`1"/>.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.The``1">
+            <summary>
+              Creates a dependency of the type specified by <typeparamref name="TInterfaceType"/>.
+              This method reuses existing instances. If an instance of <typeparamref name="TInterfaceType"/>
+              was already requested it's returned here. (You can say this is kind of a singleton behavior)
+            
+              Besides that, you can obtain a reference to automatically injected stubs with this 
+              method.
+            </summary>
+            <typeparam name="TInterfaceType">
+              The type to create a dependency for. (Should be an interface)
+            </typeparam>
+            <returns>
+              An instance implementing <see cref="!:TInterfaceType"/>.
+            </returns>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.An``1">
+            <summary>
+              Creates a dependency of the type specified by <typeparamref name = "TInterfaceType" />.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              The type to create a dependency for. (Should be an interface)
+            </typeparam>
+            <returns>
+              An newly created instance implementing <typeparamref name = "TInterfaceType" />.
+            </returns>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.Some``1">
+            <summary>
+              Creates a list of dependencies of the type specified by <typeparamref name = "TInterfaceType" />.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              Specifies the dependency type. (Should be an interface).
+            </typeparam>
+            <returns>
+              An newly created instance implementing <typeparamref name = "TInterfaceType" />.
+            </returns>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.Use``1(``0)">
+            <summary>
+              Uses the instance supplied by <paramref name = "instance" /> during the 
+              creation of the sut. The specified instance will be injected into the constructor.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              Specifies the interface type.
+            </typeparam>
+            <param name = "instance">
+              Specifies the instance to be used for the specification.
+            </param>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.Xunit#ISpecification#Initialize">
+            <summary>
+              Initializes the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.Xunit#ISpecification#Cleanup">
+            <summary>
+              Cleans up the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.EstablishContext">
+            <summary>
+              Establishes the context for the specification. In AAA terms this 
+              method implements the Arange part.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.CreateSut">
+            <summary>
+              Creates the system under test.
+            </summary>
+            <returns>
+              A new instance of the system under test.
+            </returns>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.PrepareSut">
+            <summary>
+              Can be overriden in order to do further configuration of the SUT after the SUT
+              has been created. This method is called after <see cref="M:Xunit.InstanceContextSpecification`1.CreateSut"/>
+              and before <see cref="M:Xunit.InstanceContextSpecification`1.Because"/>.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.Because">
+            <summary>
+              Performs the actual action which should be observed by the specification. 
+              In AAA terms this method implements the Act part.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.AfterEachObservation">
+            <summary>
+              Is called after each observation. Can be used for cleanup.
+            </summary>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.With``1">
+            <summary>
+              Configures the specification to execute the <see cref="T:Xunit.IBehaviorConfig"/> specified
+              by <typeparamref name="TBehaviorConfig"/> before the action on the sut is executed (<see cref="M:Xunit.InstanceContextSpecification`1.Because"/>).
+            </summary>
+            <typeparam name="TBehaviorConfig">
+              Specifies the type of the config to be executed.
+            </typeparam>
+        </member>
+        <member name="M:Xunit.InstanceContextSpecification`1.With(Xunit.IBehaviorConfig)">
+            <summary>
+              Configures the specification to execute the <see cref="T:Xunit.IBehaviorConfig"/> specified
+              by <paramref name="behaviorConfig"/> before the action on the sut is executed (<see cref="M:Xunit.InstanceContextSpecification`1.Because"/>).
+            </summary>
+            <param name="behaviorConfig">
+              Specifies the behavior config to be executed.
+            </param>
+        </member>
+        <member name="P:Xunit.InstanceContextSpecification`1.Sut">
+            <summary>
+              Gets the system under test. This is the actual class under test.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.IFabric">
+            <summary>
+              A fabric for creating a constructor dependency of the system under test
+              and applying some configuration rules to it.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.IFabric.Build(System.Type,StructureMap.IContainer)">
+            <summary>
+              Builds a dependency.
+            </summary>
+            <param name = "typeToBuild">
+              Specifies the type to be build.
+            </param>
+            <param name = "container">
+              Specifies the automocking container.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.IConfigurationRule">
+            <summary>
+              A configuration rule which can be applied to a created instance.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.IConfigurationRule.Configure(System.Object,Xunit.Internal.IFabricContext)">
+            <summary>
+              Configures the instance.
+            </summary>
+        </member>
+        <member name="T:Xunit.Internal.Fabric">
+            <summary>
+              A fabric for creating a constructor dependency of the system under test
+              and applying some configuration rules to it.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.Fabric.#ctor(Xunit.IMockingEngine,System.Collections.Generic.IEnumerable{Xunit.Internal.IBuilder},System.Collections.Generic.IEnumerable{Xunit.Internal.IConfigurationRule})">
+            <summary>
+              Creates a new instance of the <see cref="T:Xunit.Internal.Fabric"/> class.
+            </summary>
+            <param name="mockingEngine">The mock factory.</param>
+            <param name="builders">A collection of all known builders.</param>
+            <param name="configurationRules">A set of rules for configuration of the produced instances.</param>
+        </member>
+        <member name="M:Xunit.Internal.Fabric.Build(System.Type,StructureMap.IContainer)">
+            <summary>
+              Builds a dependency.
+            </summary>
+            <param name = "typeToBuild">
+              Specifies the type to be build.
+            </param>
+            <param name = "container">
+              Specifies the automocking container.
+            </param>
+            <returns>
+              The created instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.MockingExtensions">
+            <summary>
+              A set of extension methods for setting up behavior on stubs in a fashion idependant 
+              to a particular mocking framework.
+            </summary>
+        </member>
+        <member name="M:Xunit.MockingExtensions.WhenToldTo``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">
+              Specifies the type of the dependency.
+            </typeparam>
+            <typeparam name="TReturnValue">
+              Specifies the type of the return value.
+            </typeparam>
+            <param name="dependency">
+              The dependency to configure behavior on.
+            </param>
+            <param name="func">
+              Configures the behavior. This must be a void method.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.IQueryOptions`1"/> for further configuration.
+            </returns>
+        </member>
+        <member name="M:Xunit.MockingExtensions.WhenToldTo``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+              Configures the behavior of the dependency specified by <paramref name="dependency"/>.
+            </summary>
+            <typeparam name="TDependency">
+              Specifies the type of the dependency.
+            </typeparam>
+            <param name="dependency">
+              The dependency to configure behavior on.
+            </param>
+            <param name="func">
+              Configures the behavior. This must be a void method.
+            </param>
+            <returns>
+              A <see cref="T:Xunit.ICommandOptions"/> for further configuration.
+            </returns>
+            <remarks>
+              This method is used for command, e.g. methods returning void.
+            </remarks>
+        </member>
+        <member name="T:Xunit.ObservationAttributeBase">
+            <summary>
+              A specialized <see cref="T:Xunit.FactAttribute"/> for integrating the class templates
+              used in xUnit.BDDExtensions with xUnit.net. The whole purpose of this attribute (besides readability)
+              is to decorate the original <see cref="T:Xunit.Sdk.ITestCommand"/> recieved from xUnit.net with a <see cref="T:Xunit.SpecificationCommand"/>
+              from xUnit.BDDExtensions.
+            </summary>
+        </member>
+        <member name="M:Xunit.ObservationAttributeBase.EnumerateTestCommands(Xunit.Sdk.IMethodInfo)">
+            <summary>
+              Creates all the test command for the method specified by <paramref name = "method" />.
+            </summary>
+            <param name = "method">The method to create command for.</param>
+            <returns>
+              All test commands which should be executed for the particular test method.
+            </returns>
+        </member>
+        <member name="T:Xunit.StaticContextSpecification">
+            <summary>
+              Base class for specifications.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.#ctor">
+            <summary>
+              Creates a new instance of the <see cref="T:Xunit.StaticContextSpecification"/> class.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.Xunit#ISpecification#Initialize">
+            <summary>
+              Initializes the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.Xunit#ISpecification#Cleanup">
+            <summary>
+              Cleans up the specification class.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.EstablishContext">
+            <summary>
+              Establishes the context for the specification. In AAA terms this 
+              method implements the Arange part.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.Because">
+            <summary>
+              Performs the actual action which should be observed by the specification. 
+              In AAA terms this method implements the Act part.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.AfterEachObservation">
+            <summary>
+              Is called after each observation. Can be used for cleanup.
+            </summary>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.An``1">
+            <summary>
+              Creates a dependency of the type specified by <typeparamref name = "TInterfaceType" />.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              The type to create a dependency for. (Should be an interface)
+            </typeparam>
+            <returns>
+              An newly created instance implementing <typeparamref name = "TInterfaceType" />.
+            </returns>
+        </member>
+        <member name="M:Xunit.StaticContextSpecification.Some``1">
+            <summary>
+              Creates a list of dependencies of the type specified by <typeparamref name = "TInterfaceType" />.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              Specifies the dependency type. (Should be an interface).
+            </typeparam>
+            <returns>
+              An newly created instance implementing <typeparamref name = "TInterfaceType" />.
+            </returns>
+        </member>
+        <member name="T:Xunit.Internal.MockFactoryExtensions">
+            <summary>
+              A static extension class for the <see cref="T:Xunit.IMockingEngine"/> interface.
+            </summary>
+        </member>
+        <member name="M:Xunit.Internal.MockFactoryExtensions.CreateStubCollectionOf``1(Xunit.IMockingEngine)">
+            <summary>
+              Creates list filled with 3 stubs of the type specified via <typeparamref name = "TInterfaceType" />.
+            </summary>
+            <typeparam name = "TInterfaceType">
+              Specifies the interface type.
+            </typeparam>
+            <param name = "mockingEngine">
+              Specifies the factory for creating stub implementations on-the-fly.
+            </param>
+            <returns>
+              A collection containing three stubs of the specified type.
+            </returns>
+        </member>
+        <member name="M:Xunit.Internal.MockFactoryExtensions.Stub``1(Xunit.IMockingEngine)">
+            <summary>
+              Creates a stub.
+            </summary>
+            <typeparam name = "T">
+              Specifies the type of the stub. This needs to be an interface.
+            </typeparam>
+            <returns>
+              The created stub instance.
+            </returns>
+        </member>
+        <member name="T:Xunit.SpecificationCommand">
+            <summary>
+              A <see cref="T:Xunit.Sdk.ITestCommand"/> decorator which invokes methods on the specification class before and after the real test method executes.
+              This requires the specification class to implement <see cref="T:Xunit.ISpecification"/>.
+            </summary>
+        </member>
+        <member name="M:Xunit.SpecificationCommand.#ctor(Xunit.Sdk.ITestCommand,Xunit.Sdk.IMethodInfo)">
+            <summary>
+              Initializes a new instance of the <see cref="T:Xunit.SpecificationCommand"/> class.
+            </summary>
+            <param name="innerCommand">The inner command.</param>
+            <param name="testMethod">The test method.</param>
+        </member>
+        <member name="M:Xunit.SpecificationCommand.Execute(System.Object)">
+            <summary>
+              Executes the specified test class.
+            </summary>
+            <param name = "testClass">The test class.</param>
+            <returns>
+              The method result of the xUnit.net test execution.
+            </returns>
+        </member>
+    </members>
+</doc>

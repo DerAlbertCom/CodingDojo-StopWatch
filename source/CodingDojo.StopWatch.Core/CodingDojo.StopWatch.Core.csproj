@@ -53,11 +53,13 @@
     <Compile Include="Dojo.cs" />
     <Compile Include="CoderQueue.cs" />
     <Compile Include="DojoStopWatch.cs" />
+    <Compile Include="DojoTeam.cs" />
     <Compile Include="DojoTime.cs" />
     <Compile Include="DojoUpdatingTimer.cs" />
     <Compile Include="IDojoTime.cs" />
     <Compile Include="IUpdating.cs" />
     <Compile Include="QueueStack.cs" />
+    <Compile Include="SimpleArray.cs" />
     <Compile Include="Team.cs" />
     <Page Include="Controls\StopWatchControl.xaml">
       <Generator>MSBuild:Compile</Generator>

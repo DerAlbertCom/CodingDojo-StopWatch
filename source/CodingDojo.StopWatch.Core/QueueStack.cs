@@ -36,6 +36,10 @@ namespace CodingDojo.StopWatch
 
         public void Push(T item)
         {
+            if (items.Contains(item))
+            {
+                items.Remove(item);
+            }
             items.Insert(0, item);
         }
 

@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoderQueueSpecs.cs" />
+    <Compile Include="CoderSpecs.cs" />
     <Compile Include="DojoSpecs.cs" />
     <Compile Include="ConcernOfDojo.cs" />
     <Compile Include="DojoStopWatchSpecs.cs" />
+    <Compile Include="DojoTeamSpecs.cs" />
     <Compile Include="DojoTimeSpecs.cs" />
     <Compile Include="DojoUpdatingTimerSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ namespace CodingDojo.StopWatch.Core.Specs
     {
         protected override void Because()
         {
-            Sut.AddCoder(new Coder());
+            Sut.AddCoder("Coder1");
         }
 
         [Observation]
@@ -36,12 +36,12 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void PrepareSut()
         {
             base.PrepareSut();
-            Sut.AddCoder(new Coder());
-            Sut.AddCoder(new Coder());
+            Sut.AddCoder("Coder1");
+            Sut.AddCoder("Coder2");
         }
         protected override void Because()
         {
-            Sut.AddCoder(new Coder());
+            Sut.AddCoder("Coder3");
         }
 
         [Observation]

@@ -12,7 +12,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         protected override void EstablishContext()
         {
             base.EstablishContext();
-            The<IUpdating>().WhenToldTo(u => u.Update()).Callback(() => updatedCount++ > 0);
+            The<IUpdating>().WhenToldTo(u => u.Update()).Callback(() => updatedCount++);
         }
         protected override DojoUpdatingTimer CreateSut()
         {
