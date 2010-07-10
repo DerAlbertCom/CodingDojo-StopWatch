@@ -29,7 +29,7 @@ namespace CodingDojo.StopWatch
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new System.NotImplementedException();
         }
     }
 }

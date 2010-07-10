@@ -53,7 +53,12 @@ namespace CodingDojo.StopWatch
 
         void IUpdating.Update()
         {
+            currentTime = DateTime.Now;
             OnTimeChanged();
+        }
+        public override string ToString()
+        {
+            return Time.ToString();
         }
     }
 }

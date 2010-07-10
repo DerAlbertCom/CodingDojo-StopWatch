@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace CodingDojo.StopWatch
 {
@@ -9,7 +10,8 @@ namespace CodingDojo.StopWatch
         private readonly IList<Coder> coders = new List<Coder>();
         private readonly DojoTime roundTime = new DojoTime();
         private readonly DojoStopWatch stopWatch = new DojoStopWatch();
-       
+        private readonly DojoTeam dojoTeam = new DojoTeam();
+
         private IDojoTime currentTime;
         private readonly DojoUpdatingTimer timer;
 
@@ -17,15 +19,27 @@ namespace CodingDojo.StopWatch
 
         public Dojo()
         {
+            roundTime.SetTime(new TimeSpan(0, 8, 0));
             roundTime.TimeChanged += (sender, args) => UpdateCurrentTime();
             stopWatch.TimeChanged += (sender, args) => UpdateCurrentTime();
+            dojoTeam.PropertyChanged += (sender, args) => UpdateTeamMembers();
             currentTime = roundTime;
             timer = new DojoUpdatingTimer(stopWatch, 1000.0);
+
+            dojoTeam.Queue.Enqueue(new Coder("Albert Weinert"));
+            dojoTeam.Queue.Enqueue(new Coder("Ilker Cetinkaya"));
+            dojoTeam.Queue.Enqueue(new Coder("Bernd Hengelein"));
+            dojoTeam.GetNextTeamMembers();
         }
 
         private void UpdateCurrentTime()
         {
             OnPropertyChanged("CurrentTime");
+        }
+
+        private void UpdateTeamMembers()
+        {
+            OnPropertyChanged("CurrentTeamMembers");
         }
 
 
@@ -42,6 +56,7 @@ namespace CodingDojo.StopWatch
 
         private void OnPropertyChanged(string propertyName)
         {
+            
             var handler = PropertyChanged;
             if (handler != null)
             {
@@ -49,9 +64,9 @@ namespace CodingDojo.StopWatch
             }
         }
 
-        public TimeSpan CurrentTime
+        public  string CurrentTime
         {
-            get { return currentTime.Time; }
+            get { return currentTime.ToString(); }
         }
 
         public void IncreaseTime()
@@ -69,17 +84,33 @@ namespace CodingDojo.StopWatch
             currentTime.Decrease();
         }
 
+        public void PushbackTeamMember(int index)
+        {
+            dojoTeam.PushbackTeamMember(index);
+        }
         public void StartNewRound()
         {
             currentTime = stopWatch;
+            dojoTeam.GetNextTeamMembers();
             stopWatch.StartRound(roundTime);
             timer.Start();
             UpdateCurrentTime();
         }
 
+        public DojoTeam DojoTeam
+        {
+            get { return dojoTeam; }
+        }
+
         public IEnumerable<Coder> Coders
         {
             get { return coders; }
+        }
+
+
+        public Coder[] CurrentTeamMembers
+        {
+            get { return dojoTeam.CurrentTeamMembers.ToArray(); }
         }
     }
 }

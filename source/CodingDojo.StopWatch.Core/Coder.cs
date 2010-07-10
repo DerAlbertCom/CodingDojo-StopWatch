@@ -36,5 +36,10 @@ namespace CodingDojo.StopWatch
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

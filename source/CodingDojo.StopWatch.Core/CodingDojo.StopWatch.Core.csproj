@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coder.cs" />
+    <Compile Include="Controls\Commands\ActionCommand.cs" />
+    <Compile Include="Controls\DojoViewModel.cs" />
     <Compile Include="Dojo.cs" />
     <Compile Include="CoderQueue.cs" />
     <Compile Include="DojoStopWatch.cs" />

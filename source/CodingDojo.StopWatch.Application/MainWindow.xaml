@@ -1,8 +1,8 @@
 ﻿<Window x:Class="CodingDojo.StopWatch.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="259" Width="306" xmlns:my="clr-namespace:CodingDojo.StopWatch.Controls;assembly=CodingDojo.StopWatch.Core">
     <Grid>
-        
+        <my:StopWatchControl Margin="12" Name="stopWatchControl1" />
     </Grid>
 </Window>

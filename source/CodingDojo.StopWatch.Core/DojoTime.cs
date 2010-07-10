@@ -43,5 +43,10 @@ namespace CodingDojo.StopWatch
         {
             Time = Time.Subtract(OneMinute);
         }
+
+        public override string ToString()
+        {
+            return Time.ToString();
+        }
     }
 }
