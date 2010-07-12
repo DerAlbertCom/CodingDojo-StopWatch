@@ -59,7 +59,7 @@
         </Style>
         <Storyboard x:Key="ShowMinuteButtons">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MinuteButtons">
-                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0.75"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.35" Value="0.8"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MinuteButtons">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
@@ -67,10 +67,10 @@
         </Storyboard>
         <Storyboard x:Key="HideMinuteButtons">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MinuteButtons">
-                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.35" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MinuteButtons">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.25" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.35" Value="{x:Static Visibility.Hidden}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="HideButtons">
@@ -98,7 +98,7 @@
     <Grid x:Name="LayoutRoot" Margin="0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF5A4444" Offset="1"/>
+                <GradientStop Color="#FF766666" Offset="1"/>
                 <GradientStop Color="White"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -109,8 +109,8 @@
         			<StackPanel x:Name="MinuteButtons">
         				<StackPanel.Background>
         					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        						<GradientStop Color="#FFD1CACA" Offset="1"/>
-        						<GradientStop Color="#FFF5F4F4" Offset="0.001"/>
+        						<GradientStop Color="#FFD5D0D0" Offset="1"/>
+        						<GradientStop Color="#FFF6F5F5" Offset="0.001"/>
         					</LinearGradientBrush>
         				</StackPanel.Background>
         				<Button Content="Up" d:LayoutOverrides="HorizontalAlignment" Width="50" Template="{DynamicResource DingButton}" Margin="0" Command="{Binding MinutesUp, Mode=OneWay}" Height="15">
