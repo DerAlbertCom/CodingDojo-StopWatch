@@ -40,6 +40,7 @@ namespace CodingDojo.StopWatch
         private void UpdateTeamMembers()
         {
             OnPropertyChanged("CurrentTeamMembers");
+            OnPropertyChanged("NextTeamMember");
         }
 
 
@@ -84,9 +85,16 @@ namespace CodingDojo.StopWatch
             currentTime.Decrease();
         }
 
-        public void PushbackTeamMember(int index)
+        public void PushbackTeamMember(Coder coder)
         {
-            dojoTeam.PushbackTeamMember(index);
+            if (dojoTeam.CurrentTeamMembers[0] == coder)
+            {
+                dojoTeam.PushbackTeamMember(0);
+            }
+            else if (dojoTeam.CurrentTeamMembers[1] == coder)
+            {
+                dojoTeam.PushbackTeamMember(1);
+            }
         }
         public void StartNewRound()
         {
@@ -111,6 +119,11 @@ namespace CodingDojo.StopWatch
         public Coder[] CurrentTeamMembers
         {
             get { return dojoTeam.CurrentTeamMembers.ToArray(); }
+        }
+
+        public Coder NextTeamMember
+        {
+            get { return dojoTeam.LookNextTeamMember(); }
         }
     }
 }

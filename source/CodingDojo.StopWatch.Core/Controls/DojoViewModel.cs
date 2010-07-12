@@ -10,7 +10,6 @@ namespace CodingDojo.StopWatch.Controls
         private ICommand downOneMinuteCommand;
         private ICommand startDojo;
         private ICommand pushbackFirst;
-        private ICommand pushbackSecond;
 
         public DojoViewModel()
         {
@@ -22,8 +21,9 @@ namespace CodingDojo.StopWatch.Controls
             upOneMinuteCommand = new ActionCommand(() => IncreaseTime());
             downOneMinuteCommand = new ActionCommand(() => DecreaseTime());
             startDojo = new ActionCommand(()=>StartNewRound());
-            pushbackFirst = new ActionCommand(() => PushbackTeamMember(0));
-            pushbackSecond = new ActionCommand(() => PushbackTeamMember(1));
+            pushbackFirst = new ActionCommand<Coder>((parameter) => 
+PushbackTeamMember(parameter)
+);
         }
 
         public ICommand StartDojo
@@ -42,13 +42,9 @@ namespace CodingDojo.StopWatch.Controls
         {
             get { return downOneMinuteCommand; }
         }
-        public ICommand PushbackFirst
+        public ICommand PushbackMember
         {
             get { return pushbackFirst ; }
-        }
-        public ICommand PushbackSecond
-        {
-            get { return pushbackSecond; }
         }
     }
 

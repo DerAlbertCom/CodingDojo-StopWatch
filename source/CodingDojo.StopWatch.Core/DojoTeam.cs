@@ -60,5 +60,10 @@ namespace CodingDojo.StopWatch
                 OnPropertyChanged("CurrentTeamMembers");
             }
         }
+
+        public Coder LookNextTeamMember()
+        {
+            return Queue.Peek();
+        }
     }
 }

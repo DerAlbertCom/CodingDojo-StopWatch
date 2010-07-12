@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingDojo.Stopwatch.AddIn", "CodingDojo.Stopwatch.AddIn\CodingDojo.Stopwatch.AddIn.csproj", "{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingDojo.StopWatch.Application", "CodingDojo.StopWatch.Application\CodingDojo.StopWatch.Application.csproj", "{B9E4328F-338D-4012-B8E4-0B643BD6596C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingDojo.StopWatch.Core", "CodingDojo.StopWatch.Core\CodingDojo.StopWatch.Core.csproj", "{E9A296AD-19B9-4487-A46E-A1C6BCD910E6}"
@@ -19,16 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{FE3478AD-EB03-4363-BEF9-2F7869FCCC70}.Release|x86.ActiveCfg = Release|Any CPU
 		{B9E4328F-338D-4012-B8E4-0B643BD6596C}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{B9E4328F-338D-4012-B8E4-0B643BD6596C}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{B9E4328F-338D-4012-B8E4-0B643BD6596C}.Debug|Mixed Platforms.Build.0 = Debug|x86

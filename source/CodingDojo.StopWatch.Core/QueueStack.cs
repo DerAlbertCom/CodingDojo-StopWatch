@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CodingDojo.StopWatch
 {
-    public class QueueStack<T> : IEnumerable<T>
+    public class QueueStack<T> : IEnumerable<T> where T : class, new()
     {
         private readonly List<T> items = new List<T>();
 
@@ -54,5 +54,15 @@ namespace CodingDojo.StopWatch
         {
             items.Clear();
         }
+
+        public T Peek()
+        {
+            if (items.Count == 0)
+            {
+                return new T();
+            }
+            return items[0];
+        }
+
     }
 }
