@@ -9,7 +9,7 @@
 	mc:Ignorable="d"
 	x:Class="CodingDojo.StopWatch.Controls.StopWatchControl"
 	x:Name="StopWatch"
-	d:DesignWidth="200">
+	 d:DesignHeight="147">
     <UserControl.Resources>
         <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
         <Style x:Key="TeamMemberItem" TargetType="{x:Type ListBoxItem}">
@@ -20,31 +20,26 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="button" Style="{DynamicResource TheRemoveButton}" Width="16" HorizontalAlignment="Right" Visibility="Collapsed" Content="X" BorderThickness="0" Height="20" CommandParameter="{TemplateBinding Content}" Command="{Binding ElementName=StopWatch, Path=DataContext.PushbackMember}"     >
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeave">
-                                            <ei:ChangePropertyAction PropertyName="Visibility">
-                                                <ei:ChangePropertyAction.Value>
-                                                    <Visibility>Collapsed</Visibility>
-                                                </ei:ChangePropertyAction.Value>
-                                            </ei:ChangePropertyAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="4,0,0,0" Height="20">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseEnter">
-                                            <ei:ChangePropertyAction TargetObject="{Binding ElementName=button}" PropertyName="Visibility"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </ContentPresenter>
+                            	<i:Interaction.Triggers>
+                            		<i:EventTrigger EventName="MouseEnter">
+                            			<ei:ChangePropertyAction TargetObject="{Binding ElementName=button}" PropertyName="Visibility"/>
+                            		</i:EventTrigger>
+                            		<i:EventTrigger EventName="MouseLeave">
+                            			<ei:ChangePropertyAction TargetObject="{Binding ElementName=button}" PropertyName="Visibility">
+                            				<ei:ChangePropertyAction.Value>
+                            					<Visibility>Collapsed</Visibility>
+                            				</ei:ChangePropertyAction.Value>
+                            			</ei:ChangePropertyAction>
+                            		</i:EventTrigger>
+                            	</i:Interaction.Triggers>
+                                <Button x:Name="button" Style="{DynamicResource TheRemoveButton}" Width="16" HorizontalAlignment="Right" Visibility="Collapsed" Content="X" BorderThickness="0" Height="20" CommandParameter="{TemplateBinding Content}" Command="{Binding DataContext.PushbackMember, ElementName=StopWatch}"     />
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="4,0,0,0" Height="20"/>
                             </StackPanel>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
                             </Trigger>
                             <MultiTrigger>
@@ -52,7 +47,6 @@
                                     <Condition Property="IsSelected" Value="true"/>
                                     <Condition Property="Selector.IsSelectionActive" Value="false"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="false">
@@ -101,52 +95,54 @@
 		<local:DojoViewModel/>
 	</UserControl.DataContext>
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Margin="0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF5A4444" Offset="1"/>
                 <GradientStop Color="White"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <StackPanel Margin="8">
-            <Grid>
-                <TextBlock x:Name="TimerDisplay" FontSize="40" TextAlignment="Center" FontWeight="Bold" Text="{Binding CurrentTime, Mode=OneWay}"/>
-                <StackPanel x:Name="MinuteButtons" Opacity="0">
-                    <StackPanel.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFCDC6C6" Offset="1"/>
-                            <GradientStop Color="#FFF6F5F5" Offset="0.001"/>
-                        </LinearGradientBrush>
-                    </StackPanel.Background>
-                    <Button Content="Up" d:LayoutOverrides="HorizontalAlignment" Width="50" Template="{DynamicResource DingButton}" Margin="0,2,0,0" Command="{Binding MinutesUp, Mode=OneWay}">
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
-                    </Button>
-                    <Button Content="Down" d:LayoutOverrides="HorizontalAlignment" Width="50" Margin="0,7,0,0" Template="{DynamicResource DingButton}" Command="{Binding MinutesDown, Mode=OneWay}">
-                        <Button.Effect>
-                            <DropShadowEffect Direction="155" Opacity="0.5"/>
-                        </Button.Effect>
-                        <Button.LayoutTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="180"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.LayoutTransform>
-                    </Button>
-                </StackPanel>
-            </Grid>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Current Team:" Margin="0,2" FontWeight="Bold"/>
-            <StackPanel Orientation="Vertical">
-                <ListBox Foreground="Black" BorderBrush="{x:Null}" Background="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource TeamMemberItem}" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding CurrentTeamMembers}"/>
-            </StackPanel>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Next Coder:" Margin="0,4,0,2" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Margin="8,0,0,0" Text="{Binding NextTeamMember, Mode=OneWay}"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-                <Button Margin="0,0,4,0" Content="Start" Command="{Binding StartDojo, Mode=OneWay}"/>
-                <Button Margin="4,0,0,0" Content="Next" />
+        <StackPanel Margin="8" Orientation="Horizontal" d:LayoutOverrides="Height">
+            <StackPanel Orientation="Vertical" Margin="0" VerticalAlignment="Top">
+        		<Grid>
+        			<TextBlock x:Name="TimerDisplay" FontSize="32" TextAlignment="Center" FontWeight="Bold" Text="{Binding CurrentTime, Mode=OneWay}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-8,0,0"/>
+        			<StackPanel x:Name="MinuteButtons">
+        				<StackPanel.Background>
+        					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        						<GradientStop Color="#FFD1CACA" Offset="1"/>
+        						<GradientStop Color="#FFF5F4F4" Offset="0.001"/>
+        					</LinearGradientBrush>
+        				</StackPanel.Background>
+        				<Button Content="Up" d:LayoutOverrides="HorizontalAlignment" Width="50" Template="{DynamicResource DingButton}" Margin="0" Command="{Binding MinutesUp, Mode=OneWay}" Height="15">
+        					<Button.Effect>
+        						<DropShadowEffect Opacity="0.5"/>
+        					</Button.Effect>
+        				</Button>
+        				<Button Content="Down" d:LayoutOverrides="HorizontalAlignment" Width="50" Margin="0,4,0,0" Template="{DynamicResource DingButton}" Command="{Binding MinutesDown, Mode=OneWay}" Height="15">
+        					<Button.Effect>
+        						<DropShadowEffect Direction="155" Opacity="0.5"/>
+        					</Button.Effect>
+        					<Button.LayoutTransform>
+        						<TransformGroup>
+        							<ScaleTransform/>
+        							<SkewTransform/>
+        							<RotateTransform Angle="180"/>
+        							<TranslateTransform/>
+        						</TransformGroup>
+        					</Button.LayoutTransform>
+        				</Button>
+        			</StackPanel>
+        		</Grid>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Current Team:" FontWeight="Bold"/>
+        		<StackPanel Orientation="Vertical">
+        			<ListBox Foreground="Black" BorderBrush="{x:Null}" Background="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource TeamMemberItem}" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding CurrentTeamMembers}"/>
+        		</StackPanel>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Next Coder:" FontWeight="Bold"/>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Margin="8,0,0,0" Text="{Binding NextTeamMember, Mode=OneWay}"/>
+        	</StackPanel>
+            <StackPanel HorizontalAlignment="Center" Margin="8,0,0,0" VerticalAlignment="Top">
+                <Button Margin="0" Content="Start" Command="{Binding StartDojo, Mode=OneWay}"/>
+                <Button Margin="0,8,0,0" Content="Next" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -28,8 +28,8 @@ namespace CodingDojo.StopWatch
 
             dojoTeam.Queue.Enqueue(new Coder("Albert Weinert"));
             dojoTeam.Queue.Enqueue(new Coder("Ilker Cetinkaya"));
-            dojoTeam.Queue.Enqueue(new Coder("Bernd Hengelein"));
-            dojoTeam.GetNextTeamMembers();
+            dojoTeam.Queue.Enqueue(new Coder("Christina Hirth"));
+            dojoTeam.Queue.Enqueue(new Coder("Christian Deger"));
         }
 
         private void UpdateCurrentTime()
