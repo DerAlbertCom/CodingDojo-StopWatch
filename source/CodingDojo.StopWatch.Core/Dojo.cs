@@ -85,7 +85,7 @@ namespace CodingDojo.StopWatch
             currentTime.Decrease();
         }
 
-        public void PushbackTeamMember(Coder coder)
+        internal void PushbackTeamMember(Coder coder)
         {
             if (dojoTeam.CurrentTeamMembers[0] == coder)
             {

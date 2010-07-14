@@ -5,7 +5,7 @@ namespace CodingDojo.StopWatch.Controls.Commands
 {
     public class ActionCommand : ICommand
     {
-        private Action action;
+        private readonly Action action;
 
         public ActionCommand(Action action)
         {
@@ -27,7 +27,7 @@ namespace CodingDojo.StopWatch.Controls.Commands
 
     public class ActionCommand<T> : ICommand
     {
-        private Action<T> action;
+        private readonly Action<T> action;
 
         public ActionCommand(Action<T> action)
         {

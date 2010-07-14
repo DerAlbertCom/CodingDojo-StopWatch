@@ -66,6 +66,11 @@ namespace CodingDojo.StopWatch.Core.Specs
     [Concern(typeof (Dojo), "Setting up a CodingDojo")]
     public class When_adding_a_minute_of_team_time : ConcernOfDojo
     {
+        protected override void PrepareSut()
+        {
+            base.PrepareSut();
+            Sut.SetRoundTime(new TimeSpan(0,0,0));
+        }
         protected override void Because()
         {
             Sut.IncreaseTime();
@@ -74,7 +79,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_team_time_increased_for_one_minute()
         {
-            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0, 1, 0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0, 1, 0).ToString());
         }
 
         [Observation]
@@ -107,7 +112,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_team_time_increased_for_one_minute()
         {
-            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,8,0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,8,0).ToString());
         }
         [Observation]
         public void Should_the_property_changed_count_is_2()
@@ -139,7 +144,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_team_decreased_for_one_minute()
         {
-            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,6,0));
+            Sut.CurrentTime.ShouldBeEqualTo(new TimeSpan(0,6,0).ToString());
         }
 
         [Observation]
@@ -198,7 +203,7 @@ namespace CodingDojo.StopWatch.Core.Specs
         [Observation]
         public void Should_the_remaing_time_the_teamtime()
         {
-            Sut.CurrentTime.ShouldBeEqualTo(sixMinutes);
+            Sut.CurrentTime.ShouldBeEqualTo(sixMinutes.ToString());
         }
     }
 
